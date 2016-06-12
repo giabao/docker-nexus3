@@ -40,19 +40,10 @@ $ docker logs -f nexus
 logs, and storage. This directory needs to be writable by the Nexus
 process, which runs as UID 200.
 
-* Three environment variables can be used to control the JVM arguments
-
-  * `JAVA_MAX_HEAP`, passed as -Xmx.  Defaults to `1200m`.
-
-  * `JAVA_MIN_HEAP`, passed as -Xms.  Defaults to `1200m`.
-
-  * `EXTRA_JAVA_OPTS`.  Additional options can be passed to the JVM via
-  this variable.
-
-  These can be used supplied at runtime to control the JVM:
+* Additional options can be passed to the JVM via `EXTRA_JAVA_OPTS` environment variable, default is `"-Xms1200M -Xmx1200M"`
 
   ```
-  $ docker run -d -p 8081:8081 --name nexus -e JAVA_MAX_HEAP=768m sonatype/nexus3
+  $ docker run -d -p 8081:8081 --name nexus -e EXTRA_JAVA_OPTS="-Xms768M -Xmx768M" sonatype/nexus3
   ```
 
 
